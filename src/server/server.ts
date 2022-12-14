@@ -18,7 +18,7 @@ app.get("/historical-data", (req: GetHistoricalData, res) => {
     path.resolve(process.cwd(), "src/server/data", `${ticker}.csv`)
   )
     .then((data) => {
-      res.status(200).send(JSON.stringify(data));
+      res.status(200).send(data);
     })
     .catch((error) => {
       res.status(500).send(error);
