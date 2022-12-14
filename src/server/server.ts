@@ -3,7 +3,6 @@ import * as path from "path";
 import express, { Express } from "express";
 import cors from "cors";
 import { cleanDataArray, runCsvPipeline } from "./utils.js";
-import type { GetHistoricalData } from "./server.types.js";
 
 const app: Express = express();
 const port = 3000;
@@ -14,7 +13,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-app.get("/historical-data", (req: GetHistoricalData, res) => {
+app.get("/historical-data", (req, res) => {
   const { ticker } = req.query;
 
   runCsvPipeline(
