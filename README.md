@@ -5,6 +5,7 @@
     - typing the input
     - typing the response
     - calling in component
+    - setting state (which themselves are typed)
 - Definining a component
     - using a user defined type
     - feedback when passing wrong type in prop
