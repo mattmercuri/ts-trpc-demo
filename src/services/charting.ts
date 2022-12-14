@@ -1,4 +1,6 @@
-export const getChartOptions = (title: string) => ({
+import type { HistoricalTickerData } from "../types/tickers.types";
+
+export const getChartOptions = (title = "") => ({
   responsive: true,
   plugins: {
     title: {
@@ -8,4 +10,18 @@ export const getChartOptions = (title: string) => ({
   },
 });
 
-export const getChartData = () => { };
+export const getChartData = (data: HistoricalTickerData) => {
+  const shapedData = {
+    labels: data.map((day) => day.date),
+    datasets: [
+      {
+        label: "Price",
+        data: data.map((day) => day.adjustedClose),
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
+
+  return shapedData;
+};

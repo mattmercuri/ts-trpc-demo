@@ -30,7 +30,7 @@ function App() {
         onChange={fetchHistoricalData}
         options={tickerSelections}
       />
-      {historicalData && <Chart />}
+      {historicalData && <Chart title="Test" historicalData={historicalData} />}
     </div>
   );
 }

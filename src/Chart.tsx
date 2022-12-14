@@ -10,6 +10,8 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { getChartData, getChartOptions } from "./services/charting";
+import { HistoricalTickerData } from "./types/tickers.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,32 +23,18 @@ ChartJS.register(
   Legend
 );
 
-export const Chart: React.FC = () => {
-  const options = {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
-    },
-  };
+type ChartProps = {
+  historicalData: HistoricalTickerData;
+  title: string;
+};
 
-  const data = {
-    labels: [1, 2, 3, 4, 5],
-    datasets: [
-      {
-        label: "Dataset 2",
-        data: [2, 4, 6, 8, 10],
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
+export const Chart: React.FC<ChartProps> = ({ historicalData, title }) => {
+  const chartOptions = getChartOptions(title);
+  const chartData = getChartData(historicalData);
 
   return (
     <div className="app__chart">
-      <Line options={options} data={data} />
+      <Line options={chartOptions} data={chartData} />
     </div>
   );
 };
