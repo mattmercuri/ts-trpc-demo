@@ -11,7 +11,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/cors": "^2.8.13",
     "axios": "^1.2.1",
+    "cors": "^2.8.5",
     "csv-reader": "^1.0.10",
     "eslint-plugin-react": "^7.31.11",
     "express": "^4.18.2",
