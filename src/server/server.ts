@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import * as path from "path";
 import express, { Express } from "express";
 import { convertLocalCsvToObject } from "./utils.js";
 
@@ -10,7 +11,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  const testThing = convertLocalCsvToObject("./data/QQQ.csv");
+  const testThing = convertLocalCsvToObject(
+    path.resolve(process.cwd(), "src", "server", "data", "QQQ.csv")
+  );
+
   res.status(200).send(JSON.stringify(testThing));
 });
 
