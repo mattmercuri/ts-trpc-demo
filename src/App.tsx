@@ -7,9 +7,7 @@ import type { OptionType } from "./types/select.types";
 import { HistoricalTickerData, ValidTicker } from "./types/tickers.types";
 
 function App() {
-  const [selectedTicker, setSelectedTicker] = useState<OptionType | null>(
-    tickerSelections[0]
-  );
+  const [selectedTicker, setSelectedTicker] = useState<OptionType | null>();
   const [historicalData, setHistoricalData] = useState<
     HistoricalTickerData | undefined
   >();
@@ -32,7 +30,7 @@ function App() {
         onChange={fetchHistoricalData}
         options={tickerSelections}
       />
-      <Chart />
+      {historicalData && <Chart />}
     </div>
   );
 }
