@@ -4,7 +4,7 @@ import { Chart } from "./Chart";
 import { tickerSelections } from "./services/tickers";
 import { getHistoricalData } from "./services/web/web";
 import type { OptionType } from "./types/select.types";
-import { HistoricalTickerData, ValidTicker } from "./types/tickers.types";
+import type { HistoricalTickerData } from "./types/tickers.types";
 
 function App() {
   const [selectedTicker, setSelectedTicker] = useState<OptionType | null>();
@@ -16,7 +16,7 @@ function App() {
     setSelectedTicker(selection);
 
     if (selection?.value) {
-      getHistoricalData(selection.value as ValidTicker).then(({ data }) => {
+      getHistoricalData(selection.value).then(({ data }) => {
         setHistoricalData(data);
       });
     }
@@ -30,7 +30,12 @@ function App() {
         onChange={fetchHistoricalData}
         options={tickerSelections}
       />
-      {historicalData && <Chart title="Test" historicalData={historicalData} />}
+      {historicalData && (
+        <Chart
+          historicalData={historicalData}
+          title={selectedTicker?.value || "Price"}
+        />
+      )}
     </div>
   );
 }

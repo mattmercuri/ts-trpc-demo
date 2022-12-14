@@ -1,4 +1,6 @@
+import { ValidTicker } from "./tickers.types";
+
 export type OptionType = {
   label: string;
-  value: string;
+  value: ValidTicker;
 };
