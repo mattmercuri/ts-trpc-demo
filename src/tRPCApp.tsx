@@ -3,13 +3,11 @@ import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
 import { Chart } from "./Chart";
 import { trpc } from "./services/trpc";
-import type { HistoricalTickerData } from "./types/tickers.types";
 
 const Content: React.FC = () => {
-  const historicalData: HistoricalTickerData = [];
-  // EXAMPLE QUERY:
-  // const { data } = trpc.hello.useQuery({ text: "Stephen" });
-  // console.log(data?.greeting);
+  const { data: historicalData } = trpc.historicalData.useQuery({
+    ticker: "SQQQ",
+  });
 
   return (
     <div className="app">
