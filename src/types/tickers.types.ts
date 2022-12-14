@@ -1,6 +1,6 @@
 // INFO: we can actually use generics to make a case
 // insensitive type
-export type ValidTicker = "QQQ" | "VTI" | "SPY" | "ABALX";
+export type ValidTicker = "QQQ" | "SQQQ" | "VTI" | "SPY" | "ABALX";
 
 export type TickerInfo = {
   ticker: ValidTicker;

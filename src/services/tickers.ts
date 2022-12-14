@@ -17,6 +17,10 @@ export const TickerInfoObject: TickerObject = {
     name: "Total US Market",
     ticker: "VTI",
   },
+  SQQQ: {
+    name: "NASDAQ 100 - Short",
+    ticker: "SQQQ",
+  },
 };
 
 export const tickerSelections = Object.values(TickerInfoObject).map(
