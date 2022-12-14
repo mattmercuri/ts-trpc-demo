@@ -6,7 +6,7 @@ import { getHistoricalData } from "./services/web/web";
 import type { OptionType } from "./types/select.types";
 import type { HistoricalTickerData } from "./types/tickers.types";
 
-function App() {
+const App: React.FC = () => {
   const [selectedTicker, setSelectedTicker] = useState<OptionType>();
   const [historicalData, setHistoricalData] = useState<
     HistoricalTickerData | undefined
@@ -38,6 +38,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;
