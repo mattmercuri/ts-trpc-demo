@@ -2,12 +2,12 @@ import { useState } from "react";
 import Select from "react-select";
 import { tickerSelections } from "./services/tickers";
 import { getHistoricalData } from "./services/web/web";
-import { ValidTickers } from "./types/tickers.types";
+import type { OptionType } from "./services/charting";
 
 function App() {
-  const [selectedTicker, setSelectedTicker] = useState<ValidTickers | null>(
-    tickerSelections[0].value
-  );
+  const [selectedTicker, setSelectedTicker] = useState<
+    OptionType | undefined | null
+  >(tickerSelections[0]);
 
   const fetchHistoricalData = () => {
     getHistoricalData("QQQ").then((data) => {

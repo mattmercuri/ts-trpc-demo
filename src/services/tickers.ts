@@ -20,5 +20,5 @@ export const TickerInfoObject: TickerObject = {
 };
 
 export const tickerSelections = Object.values(TickerInfoObject).map(
-  ({ ticker, name }) => ({ value: ticker, label: name, options: [] })
+  ({ ticker, name }) => ({ value: ticker, label: name })
 );
