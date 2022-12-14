@@ -11,6 +11,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.20.2",
+    "@trpc/client": "^10.5.0",
+    "@trpc/react-query": "^10.5.0",
     "@trpc/server": "^10.5.0",
     "@types/cors": "^2.8.13",
     "axios": "^1.2.1",
