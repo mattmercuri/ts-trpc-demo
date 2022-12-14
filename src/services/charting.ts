@@ -7,3 +7,5 @@ export const getChartOptions = (title: string) => ({
     },
   },
 });
+
+export const getChartData = () => { };

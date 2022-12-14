@@ -4,14 +4,21 @@ import { Chart } from "./Chart";
 import { tickerSelections } from "./services/tickers";
 import { getHistoricalData } from "./services/web/web";
 import type { OptionType } from "./types/select.types";
+import type { ValidTicker } from "./types/tickers.types";
 
 function App() {
   const [selectedTicker, setSelectedTicker] = useState<OptionType | null>(
     tickerSelections[0]
   );
 
-  const fetchHistoricalData = () => {
-    getHistoricalData("QQQ").then((data) => {
+  const fetchHistoricalData = (selection: OptionType | null) => {
+    setSelectedTicker(selection);
+
+    if (!selection?.value) {
+      return;
+    }
+
+    getHistoricalData(selection.value as ValidTicker).then((data) => {
       console.log(data);
     });
   };
@@ -21,11 +28,10 @@ function App() {
       <Select
         className="app__dropdown"
         defaultValue={selectedTicker}
-        onChange={setSelectedTicker}
+        onChange={fetchHistoricalData}
         options={tickerSelections}
       />
       <Chart />
-      <button onClick={fetchHistoricalData}>Get Data</button>
     </div>
   );
 }
