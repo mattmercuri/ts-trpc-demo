@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
+import { Chart } from "./Chart";
 import { tickerSelections } from "./services/tickers";
 import { getHistoricalData } from "./services/web/web";
 import type { OptionType } from "./types/select.types";
@@ -23,6 +24,7 @@ function App() {
         onChange={setSelectedTicker}
         options={tickerSelections}
       />
+      <Chart />
       <button onClick={fetchHistoricalData}>Get Data</button>
     </div>
   );
