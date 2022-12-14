@@ -1,9 +1,15 @@
 import { getHistoricalData } from "./services/web/web";
 
 function App() {
+  const fetchHistoricalData = () => {
+    getHistoricalData("QQQ").then((data) => {
+      console.log(data);
+    });
+  };
+
   return (
     <div>
-      <button onClick={() => getHistoricalData("QQQ")}>Get Data</button>
+      <button onClick={fetchHistoricalData}>Get Data</button>
     </div>
   );
 }

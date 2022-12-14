@@ -2,7 +2,7 @@
 import * as path from "path";
 import express, { Express } from "express";
 import cors from "cors";
-import { runCsvPipeline } from "./utils.js";
+import { cleanDataArray, runCsvPipeline } from "./utils.js";
 import type { GetHistoricalData } from "./server.types.js";
 
 const app: Express = express();
@@ -21,7 +21,7 @@ app.get("/historical-data", (req: GetHistoricalData, res) => {
     path.resolve(process.cwd(), "src/server/data", `${ticker}.csv`)
   )
     .then((data) => {
-      res.status(200).send(data);
+      res.status(200).send(cleanDataArray(data));
     })
     .catch((error) => {
       res.status(500).send(error);
