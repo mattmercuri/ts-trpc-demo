@@ -14,28 +14,26 @@ const runCsvPipeline = (filePath: fs.PathLike) => {
   const csvStream = new csvReader(options);
   const readStream = fs.createReadStream(filePath, "utf8");
 
-  const processedObject: Line[] = [];
-  readStream
-    .on("error", (err) => {
-      console.log(err);
-      csvStream.destroy(err);
-    })
-    .pipe(csvStream)
-    .on("error", (err) => {
-      console.error(err);
-    })
-    .on("data", (data) => {
-      processedObject.push(data);
-    })
-    .on("end", () => {
-      console.log("done");
-    });
-
-  return processedObject;
+  return new Promise((resolve, reject) => {
+    const chunks: Line[] = [];
+    readStream
+      .on("error", (err) => {
+        console.log(err);
+        csvStream.destroy(err);
+      })
+      .pipe(csvStream)
+      .on("error", (err) => {
+        reject(err);
+      })
+      .on("data", (data) => {
+        chunks.push(data);
+      })
+      .on("end", () => {
+        resolve(chunks);
+      });
+  });
 };
 
 export const convertLocalCsvToObject = (filePath: fs.PathLike) => {
-  const test = runCsvPipeline(filePath);
-
-  return test;
+  runCsvPipeline(filePath).then((something) => console.log(something));
 };
