@@ -13,6 +13,9 @@ const Content: React.FC = () => {
   const [historicalData, setHistoricalData] = useState<
     HistoricalTickerData | undefined
   >();
+  const test = trpc.hello.useQuery({ text: "hi there" });
+
+  console.log(test);
 
   return (
     <div className="app">
