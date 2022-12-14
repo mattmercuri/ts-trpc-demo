@@ -1,5 +1,6 @@
 import { initTRPC } from "@trpc/server";
 import { z } from "zod";
+import { getDataArray } from "./utils.js";
 
 export const t = initTRPC.create();
 
@@ -31,8 +32,9 @@ export const appRouter = t.router({
         ]),
       })
     )
-    .query(({ input }) => {
-      return [];
+    .query(async ({ input }) => {
+      const result = await getDataArray(input.ticker);
+      return result;
     }),
 });
 

@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as path from "path";
 import csvReader from "csv-reader";
 import type { CsvDailyData } from "./server.types";
 
@@ -46,4 +47,17 @@ export const cleanDataArray = (data: CsvDailyData[]) => {
     open: date.Open,
     volume: date.Volume,
   }));
+};
+
+export const getDataArray = async (ticker: string) => {
+  let result;
+  try {
+    result = await runCsvPipeline(
+      path.resolve(process.cwd(), "src/server/data", `${ticker}.csv`)
+    );
+    return cleanDataArray(result);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  }
 };
