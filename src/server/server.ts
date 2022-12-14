@@ -2,12 +2,20 @@
 import * as path from "path";
 import express, { Express } from "express";
 import cors from "cors";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import { cleanDataArray, runCsvPipeline } from "./utils.js";
+import { appRouter } from "./trpcConfig.js";
 
 const app: Express = express();
 const port = 3000;
 
 app.use(cors());
+app.use(
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+  })
+);
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
