@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 app.get("/test", (req, res) => {
   const testThing = convertLocalCsvToObject(
-    path.resolve(process.cwd(), "src", "server", "data", "QQQ.csv")
+    path.resolve(process.cwd(), "src/server/data", "QQQ.csv")
   );
 
   res.status(200).send(JSON.stringify(testThing));
