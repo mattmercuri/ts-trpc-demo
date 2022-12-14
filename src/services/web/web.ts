@@ -1,9 +1,10 @@
 import axios from "axios";
-import type { ValidTickers } from "./web.types";
+import type { ValidTicker } from "../../types/tickers.types";
+import type { GetHistoricalData } from "./web.types";
 
 axios.defaults.baseURL = "http://localhost:3000";
 
-export function getHistoricalData(ticker: ValidTickers) {
+export function getHistoricalData(ticker: ValidTicker) {
   const reqUrl = "/historical-data";
-  return axios.get(reqUrl, { params: { ticker } });
+  return axios.get<GetHistoricalData>(reqUrl, { params: { ticker } });
 }

@@ -18,7 +18,7 @@ function App() {
       return;
     }
 
-    getHistoricalData(selection.value as ValidTicker).then((data) => {
+    getHistoricalData(selection.value as ValidTicker).then(({ data }) => {
       console.log(data);
     });
   };

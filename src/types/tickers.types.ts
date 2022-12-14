@@ -8,3 +8,15 @@ export type TickerInfo = {
 };
 
 export type TickerObject = { [key in ValidTicker]: TickerInfo };
+
+export type DailyTickerData = {
+  adjustedClose: number;
+  close: number;
+  date: string;
+  high: number;
+  low: number;
+  open: number;
+  volume: number;
+};
+
+export type HistoricalTickerData = DailyTickerData[];
