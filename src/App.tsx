@@ -7,12 +7,12 @@ import type { OptionType } from "./types/select.types";
 import type { HistoricalTickerData } from "./types/tickers.types";
 
 function App() {
-  const [selectedTicker, setSelectedTicker] = useState<OptionType | null>();
+  const [selectedTicker, setSelectedTicker] = useState<OptionType>();
   const [historicalData, setHistoricalData] = useState<
     HistoricalTickerData | undefined
   >();
 
-  const fetchHistoricalData = (selection: OptionType | null) => {
+  const fetchHistoricalData = (selection: OptionType) => {
     setSelectedTicker(selection);
 
     if (selection?.value) {
