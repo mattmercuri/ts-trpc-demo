@@ -16,8 +16,9 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="app">
       <Select
+        className="app__dropdown"
         defaultValue={selectedTicker}
         onChange={setSelectedTicker}
         options={tickerSelections}
