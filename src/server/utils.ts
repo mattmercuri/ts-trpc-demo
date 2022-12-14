@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as fs from "fs";
 import csvReader, { Line } from "csv-reader";
 
@@ -18,8 +17,8 @@ const runCsvPipeline = (filePath: fs.PathLike) => {
     const chunks: Line[] = [];
     readStream
       .on("error", (err) => {
-        console.log(err);
         csvStream.destroy(err);
+        reject(err);
       })
       .pipe(csvStream)
       .on("error", (err) => {
