@@ -18,6 +18,31 @@ const Content: React.FC = () => {
   );
 };
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 const App: React.FC = () => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
