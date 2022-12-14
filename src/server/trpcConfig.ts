@@ -7,19 +7,6 @@ export const t = initTRPC.create();
 const publicProcedure = t.procedure;
 
 export const appRouter = t.router({
-  hello: publicProcedure
-    .input(
-      z
-        .object({
-          text: z.string(),
-        })
-        .optional()
-    )
-    .query(({ input }) => {
-      return {
-        greeting: `hello ${input?.text ?? "world"}`,
-      };
-    }),
   historicalData: publicProcedure
     .input(
       z.object({
