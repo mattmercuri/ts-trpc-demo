@@ -44,5 +44,9 @@ export const Chart: React.FC = () => {
     ],
   };
 
-  return <Line options={options} data={data} />;
+  return (
+    <div className="app__chart">
+      <Line options={options} data={data} />
+    </div>
+  );
 };
