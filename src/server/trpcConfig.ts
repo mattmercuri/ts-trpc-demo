@@ -19,6 +19,21 @@ export const appRouter = t.router({
         greeting: `hello ${input?.text ?? "world"}`,
       };
     }),
+  historicalData: publicProcedure
+    .input(
+      z.object({
+        ticker: z.union([
+          z.literal("QQQ"),
+          z.literal("SPY"),
+          z.literal("SQQQ"),
+          z.literal("VTI"),
+          z.literal("ABALX"),
+        ]),
+      })
+    )
+    .query(({ input }) => {
+      return [];
+    }),
 });
 
 // export type definition of API
