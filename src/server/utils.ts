@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import csvReader, { Line } from "csv-reader";
 
-const runCsvPipeline = (filePath: fs.PathLike) => {
+export const runCsvPipeline = (filePath: fs.PathLike): Promise<Line[]> => {
   const options = {
     skipEmptyLines: true,
     asObject: true, // convert data to object
@@ -31,8 +31,4 @@ const runCsvPipeline = (filePath: fs.PathLike) => {
         resolve(chunks);
       });
   });
-};
-
-export const convertLocalCsvToObject = (filePath: fs.PathLike) => {
-  runCsvPipeline(filePath).then((something) => console.log(something));
 };

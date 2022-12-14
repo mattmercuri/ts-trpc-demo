@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import * as path from "path";
 import express, { Express } from "express";
-import { convertLocalCsvToObject } from "./utils.js";
+import { runCsvPipeline } from "./utils.js";
 
 const app: Express = express();
 const port = 3000;
@@ -11,11 +11,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  const testThing = convertLocalCsvToObject(
+  runCsvPipeline(
     path.resolve(process.cwd(), "src/server/data", "QQQ.csv")
-  );
-
-  res.status(200).send(JSON.stringify(testThing));
+  ).then((data) => {
+    res.status(200).send(JSON.stringify(data));
+  });
 });
 
 app.listen(port, () => {
